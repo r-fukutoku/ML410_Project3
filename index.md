@@ -1,4 +1,4 @@
-Create a new Github page with a presentation on the concepts of Multivariate Regression Analysis and Gradient Boosting. Include a presentation of Extreme Gradient Boosting (xgboost).
+presentation on the concepts of Multivariate Regression Analysis and Gradient Boosting. Include a presentation of Extreme Gradient Boosting (xgboost).
 Apply the regression methods (including lowess and boosted lowess) to real data sets, such as "Cars" and "Boston Housing Data".  Record the cross-validated mean square errors and the mean absolute errors.
 
 For each method and data set report the crossvalidated mean square error and 
@@ -7,63 +7,23 @@ In this paper you should also include theoretical considerations, examples of Py
 The final results should be clearly stated.
 
 
-# Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting (Extreme Gradient Boosting (xgboost))
+# Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting inclding Extreme Gradient Boosting (xgboost)
 
-### Locally Weighted Regression (Abbreviated "loess" ; "lowess")
-Locally Weighted Regression is a non-parametric regression method that combines multiple regression models in a meta-model based on k-nearest neighbor. It addresses situations in which the classical procedures do not perform well or cannot be effectively applied without undue labor. 
-
-Lowess combines much of the simplicity of linear least squares regression with the flexibility of nonlinear regression. 
-It does this by fitting simple models to localized subsets of the data to build up a function that describes the variation in the data, point by point.
-
-With an equation, the main idea of linear regression can be expressed as the assumption that:
-
-<img width="217" alt="image" src="https://user-images.githubusercontent.com/98488324/153696127-71453565-f03a-4b04-bddf-9512e2e60332.png">
-
-If we pre-multiply this equation with a matrix of weights (the "weights" are on the main diagonal and the rest of the elements are 0), we get:
-
-<img width="349" alt="image" src="https://user-images.githubusercontent.com/98488324/153696139-ea560e34-528f-4683-a81d-94f40ba5276b.png">
-
-The distance between two independent observations is the Euclidean distance between the two represented  𝑝− dimensional vectors. The equation is:
-
-<img width="651" alt="image" src="https://user-images.githubusercontent.com/98488324/153696145-f262158e-dd10-47d4-a9b8-cc5b133fb807.png">
-
-We shall have  𝑛  differrent weight vectors because we have  𝑛  different observations.
-
-__Important aspect__: linear regression can be seen as a linear combination of the observed outputs (values of the dependent variable).
-
-We have:
-
-<img width="276" alt="image" src="https://user-images.githubusercontent.com/98488324/153696158-eb25a77b-e093-41fb-8c17-3463d390becf.png">
-
-We solve for  𝛽  (by assuming that  𝑋𝑇𝑋  is invertible):
-
-<img width="428" alt="image" src="https://user-images.githubusercontent.com/98488324/153696164-f8c5920b-06b9-4792-8955-56e82a22e692.png">
-
-We take the expected value of this equation and obtain:
-
-<img width="231" alt="image" src="https://user-images.githubusercontent.com/98488324/153696168-10bfee30-6312-4f6e-a173-75625e60b8cf.png">
-
-Therefore, the predictions we make are:
-
-<img width="249" alt="image" src="https://user-images.githubusercontent.com/98488324/153696171-65bf808d-641b-4bf3-9269-fe3a4694c897.png">
-
-For the locally weighted regression, we have:
-
-<img width="316" alt="image" src="https://user-images.githubusercontent.com/98488324/153696198-b83fc443-af89-444b-9a19-cfa95d154109.png">
-
-__The big idea__: the predictions we make are a linear combination of the actual observed values of the dependent valuable.
-
-For locally weighted regression,  𝑦̂   is obtained as a different linear combination of the values of y. 
+### Multivariate Regression Analysis
+Multivariate Regression Analysis is a 
 
 
-### Random Forest
-Random Forest Regression is a supervised learning algorithm that utilizes ensemble learning method for regression. Ensemble learning method is a technique that combines predictions from multiple machine learning algorithms to make a more accurate prediction than a single model.
 
-![image](https://user-images.githubusercontent.com/98488324/153693726-36f3fe10-9648-4606-92cb-293b6c78a9dd.png)
 
-This diagram is the basic structure of a Random Forest. The trees are parallel with no interaction amongst them. A Random Forest operates by constructing several decision trees during training time and outputting the mean of the classes as the prediction of all the trees. 
+### Gradient Boosting
+Gradient Boosting is 
+
+
 
 By default, the decision trees we use here will make their predictions based on the mean value of the target within each leaf of the tree, and the splitting criteria will be based on minimizing the mean square error, MSE.
+
+
+#### Extreme Gradient Boosting (xgboost)
 
 
 
@@ -80,7 +40,7 @@ cars = pd.read_csv("drive/MyDrive/DATA410_AdvML/cars.csv")
 <img width="234" alt="image" src="https://user-images.githubusercontent.com/98488324/153694695-0e275da1-6379-44db-af1b-92a43d0c0544.png">
 
 
-#### Locally Weighted Regression:
+#### Multivariate Regression Analysis:
 
 ```python
 %matplotlib inline
@@ -160,7 +120,7 @@ plt.plot(np.sort(xtest_scaled.ravel()),yhat_test)
 ![image](https://user-images.githubusercontent.com/98488324/153695299-b5a1f418-3757-4854-ab90-0a4184959d79.png)
 
 
-#### Random Forest:
+#### Gradient Boosting:
 ```python
 rf = RandomForestRegressor(n_estimators=100,max_depth=3)
 rf.fit(xtrain_scaled,ytrain)
