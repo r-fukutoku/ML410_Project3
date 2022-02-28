@@ -6,7 +6,7 @@ Multivariate Regression is a method used to measure the degree at which more tha
 Basic idea is that the Simple Regression model relates one predictor and one response, the Multiple Regression model relates more than one predictor and one response, and the Multivariate Regression model relates more than one predictor and more than one response. In other words, Multivariate Regression is a technique that estimates a single regression model with more than one outcome variable. When there is more than one predictor variable in a multivariate regression model, the model is a multivariate multiple regression.
 
 
-With an equation, we want
+In general, we want
 
 <img width="376" alt="image" src="https://user-images.githubusercontent.com/98488324/156024389-4a8be34c-f41b-4f35-ae2d-d8bea23de51b.png">
 
