@@ -63,6 +63,7 @@ It has three main components: additive model, loss function, and a weak learner.
 More specifically, here we assume we have an regressor  𝐹  and, for the observation  𝑥𝑖  we make the prediction  𝐹(𝑥𝑖) . To improve the predictions, we can regard  𝐹  as a "weak learner" and therefore train a decision tree (we can call it  ℎ ) where the new output is  𝑦𝑖−𝐹(𝑥𝑖) . Thus, there are increased chances that the new regressor
 
 <img width="85" alt="image" src="https://user-images.githubusercontent.com/98488324/156001320-66ec691e-d224-4d66-baac-5385ed3ce2a4.png">
+
 is better than the old one,  𝐹. 
 
 
