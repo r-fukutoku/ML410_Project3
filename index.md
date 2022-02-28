@@ -218,19 +218,18 @@ for i in range(123):
     mse_rf.append(mse(ytest,yhat_rf))
     mse_xgb.append(mse(ytest,yhat_xgb))
     #mse_nn.append(mse(ytest,yhat_nn))
-print('The Cross-validated Mean Squared Error for Lowess is : '+str(np.mean(mse_lwr)))
-print('The Cross-validated Mean Squared Error for Boosted Lowess is : '+str(np.mean(mse_blwr)))
-print('The Cross-validated Mean Squared Error for Random Forest is : '+str(np.mean(mse_rf)))
-print('The Cross-validated Mean Squared Error for Extreme Gradient Boosting (XGBoost) is : '+str(np.mean(mse_xgb)))
+print('The Cross-validated MSE for Lowess is : '+str(np.mean(mse_lwr)))
+print('The Cross-validated MSE for Boosted Lowess is : '+str(np.mean(mse_blwr)))
+print('The Cross-validated MSE for Random Forest is : '+str(np.mean(mse_rf)))
+print('The Cross-validated MSE for Extreme Gradient Boosting (XGBoost) is : '+str(np.mean(mse_xgb)))
 ```
-The Cross-validated Mean Squared Error for Lowess is : 17.025426125745327      
-The Cross-validated Mean Squared Error for Boosted Lowess is : 16.656353893436698      
-The Cross-validated Mean Squared Error for Random Forest is : 16.947624934702624     
-The Cross-validated Mean Squared Error for Extreme Gradient Boosting (XGBoost) is : 16.14075756009356     
+The Cross-validated MSE for Lowess is : 17.025426125745327      
+The Cross-validated MSE for Boosted Lowess is : 16.656353893436698      
+The Cross-validated MSE for Random Forest is : 16.947624934702624     
+The Cross-validated MSE for Extreme Gradient Boosting (XGBoost) is : 16.14075756009356     
 
-
+       
 The predictions we made for the test data:
-
 
 ```python
 fig, ax = plt.subplots(figsize=(12,9))
