@@ -16,7 +16,7 @@ where  𝐹  represents the model (regressor) we consider.
 For variable selection:      
 - We want to select only the features that are really important for our model.
 
-- If the functional input-output model is  𝑌 = 𝐹(𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝), then we imagine that it is very possible that only a subset of the variables  𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝  are important and we need to disconsider (eliminate from the model) those that are not relevant.
+- If the functional input-output model is  <img width="278" alt="image" src="https://user-images.githubusercontent.com/98488324/156055956-3b326073-c59c-42e4-b195-6b44e14bacdd.png">, then we imagine that it is very possible that only a subset of the variables  <img width="207" alt="image" src="https://user-images.githubusercontent.com/98488324/156055994-d62aaaff-f3ef-41f2-89c9-ba8d2365c24b.png">  are important and we need to disconsider (eliminate from the model) those that are not relevant.
 
 - Programming and algorithms are based on equations, functions and statement evaluations.
 
@@ -26,7 +26,7 @@ For variable selection:
 
 where the weights  𝑤𝑖  are either  0  or  1. 
 
-The vector of binary weights  𝑤 = (𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
+The vector of binary weights  <img width="205" alt="image" src="https://user-images.githubusercontent.com/98488324/156055795-02badcda-a362-4ee1-b6eb-c018fd420daf.png">  gives us what we call the __sparsity pattern__ for the variable selection.
 
 
 #### Variable Selection Example
@@ -34,7 +34,7 @@ In the case of multiple linear regression, we have that
 
 <img width="381" alt="image" src="https://user-images.githubusercontent.com/98488324/156032531-d3fb814b-f8a5-460e-a74a-9081a55e6458.png">
 
-and the sparsity pattern means that a subset of the  𝛽1,𝛽2,...𝛽𝑝  are equal to  0. 
+and the sparsity pattern means that a subset of the <img width="105" alt="image" src="https://user-images.githubusercontent.com/98488324/156055875-21c08f6f-1237-422a-b48e-311ef62de6c4.png">  are equal to  0. 
 
 Therefore, we assume
 
