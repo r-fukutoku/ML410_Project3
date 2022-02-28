@@ -24,7 +24,7 @@ Variable Selection:
 where the weights  𝑤𝑖  are either  0  or  1. 
 
 
-The vector of binary weights  𝑤=(𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
+The vector of binary weights  𝑤 = (𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
 
 Critical Aspects      
 What is the simplest choice for the function  𝐹 ?       
@@ -36,9 +36,10 @@ Variable Selection
 In the case of multiple linear regression, we have that
 
 <img width="381" alt="image" src="https://user-images.githubusercontent.com/98488324/156032531-d3fb814b-f8a5-460e-a74a-9081a55e6458.png">
+
 and the sparsity pattern means that a subset of the  𝛽1,𝛽2,...𝛽𝑝  are equal to  0. 
 
-So we assume
+Therefore, we assume
 
 <img width="141" alt="image" src="https://user-images.githubusercontent.com/98488324/156032562-16d6669a-0996-4bb7-aa9b-a178f9c3a02a.png">
 and we want the coefficients  𝛽. 
@@ -47,7 +48,7 @@ The "classical" way of solving is:
 
 <img width="222" alt="image" src="https://user-images.githubusercontent.com/98488324/156048907-6a5b81e5-6731-4098-9ea4-ad8f4403700b.png">
 
-so we get
+and we get
 
 <img width="222" alt="image" src="https://user-images.githubusercontent.com/98488324/156032618-f6a7a935-e366-4adc-8c30-f62adb920e9c.png">
 where  𝔼(𝑌)  denotes the expected value of  𝑌. 
