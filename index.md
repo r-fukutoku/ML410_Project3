@@ -303,7 +303,7 @@ for idxtrain, idxtest in kf.split(dat):
   lm.fit(X_train.reshape(-1,1),y_train)
   yhat_lm = lm.predict(X_test.reshape(-1,1))
   mae_lm.append(mean_absolute_error(y_test, yhat_lm))
-print("Validated MAE Linear Regression = ${:,.2f}".format(1000*np.mean(mae_lm)))
+print("Validated MAE Linear Regression: ${:,.2f}".format(1000*np.mean(mae_lm)))
 
 
 mae_lk = []
@@ -313,7 +313,7 @@ for idxtrain, idxtest in kf.split(dat):
   y_test = dat_test[np.argsort(dat_test[:, 0]),1]
   yhat_lk = model_lowess(dat[idxtrain,:],dat[idxtest,:],Gaussian,0.15)
   mae_lk.append(mean_absolute_error(y_test, yhat_lk))
-print("Validated MAE Local Kernel Regression = ${:,.2f}".format(1000*np.mean(mae_lk)))
+print("Validated MAE Local Kernel Regression: ${:,.2f}".format(1000*np.mean(mae_lk)))
 
 
 mae_xgb = []
@@ -326,13 +326,13 @@ for idxtrain, idxtest in kf.split(dat):
   model_xgb.fit(X_train.reshape(-1,1),y_train)
   yhat_xgb = model_xgb.predict(X_test.reshape(-1,1))
   mae_xgb.append(mean_absolute_error(y_test, yhat_xgb))
-print("Validated MAE XGBoost Regression = ${:,.2f}".format(1000*np.mean(mae_xgb)))
+print("Validated MAE XGBoost Regression: ${:,.2f}".format(1000*np.mean(mae_xgb)))
 ```
 #### Final results: 
 
-Validated MAE Linear Regression = $4,447.94      
-Validated MAE Local Kernel Regression = $4,090.03      
-Validated MAE XGBoost Regression = $4,179.17      
+Validated MAE Linear Regression: $4,447.94      
+Validated MAE Local Kernel Regression: $4,090.03      
+Validated MAE XGBoost Regression: $4,179.17      
 
 
 #### Note about the MSE and MAE: 
