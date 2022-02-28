@@ -13,7 +13,7 @@ In general, we want
 where  𝐹  represents the model (regressor) we consider.
 
 
-For variable selection:      
+For the variable selection:      
 - We want to select only the features that are really important for our model.
 
 - If the functional input-output model is  <img width="278" alt="image" src="https://user-images.githubusercontent.com/98488324/156055956-3b326073-c59c-42e4-b195-6b44e14bacdd.png">, then we imagine that it is very possible that only a subset of the variables  <img width="207" alt="image" src="https://user-images.githubusercontent.com/98488324/156055994-d62aaaff-f3ef-41f2-89c9-ba8d2365c24b.png">  are important and we need to disconsider (eliminate from the model) those that are not relevant.
