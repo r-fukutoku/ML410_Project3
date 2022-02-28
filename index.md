@@ -4,13 +4,12 @@
 Multivariate regression is a technique that estimates a single regression model with more than one outcome variable as the name implies. When there is more than one predictor variable in a multivariate regression model, the model is a multivariate multiple regression.
 
 
-
 In general, we want
 
 <img width="376" alt="image" src="https://user-images.githubusercontent.com/98488324/156024389-4a8be34c-f41b-4f35-ae2d-d8bea23de51b.png">
 where  𝐹  represents the model (regressor) we consider.
 
-Variable Selection: 
+Variable Selection:      
 We want to select only the features that are really important for our model.
 
 If the functional input-output model is  𝑌=𝐹(𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝) , then we imagine that it is very possible that only a subset of the variables  𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝  are important and we need to disconsider (eliminate from the model) those that are not relevant.
@@ -25,13 +24,13 @@ where the weights  𝑤𝑖  are either  0  or  1.
 
 The vector of binary weights  𝑤=(𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
 
-Critical Aspects
+Critical Aspects      
 What is the simplest choice for the function  𝐹 ?
 How do we perform variable selection?
 How do we accomodate nonlinear relationships?
 
 
-Variable Selection
+Variable Selection      
 In the case of multiple linear regression we have that
 
 𝐹(𝑋1,𝑋2,...𝑋𝑝)=𝛽1𝑋1+𝛽2𝑋2+...𝛽𝑝𝑋𝑝 
@@ -285,6 +284,7 @@ ax.grid(b=True,which='minor', color ='grey', linestyle='--', alpha=0.2)
 ax.minorticks_on()
 plt.legend()
 ```
+<img width="763" alt="image" src="https://user-images.githubusercontent.com/98488324/156029484-05ebb189-e26b-4bb2-aefa-9d74ab31efdd.png">
 
 
 #### Apply Boston Housing data:
