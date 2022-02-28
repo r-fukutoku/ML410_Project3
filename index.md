@@ -1,9 +1,12 @@
 # Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting including XGBoost
 
 ### Multivariate Regression Analysis
-Multivariate regression is a technique that estimates a single regression model with more than one outcome variable as the name implies. When there is more than one predictor variable in a multivariate regression model, the model is a multivariate multiple regression.
+Multivariate Regression is a method used to measure the degree at which more than one independent variable (predictors) and more than one dependent variable (responses), are linearly related. The method is broadly used to predict the behavior of the response variables associated to changes in the predictor variables, once a desired degree of relation has been established.
 
-In general, we want
+Basic idea is that the Simple Regression model relates one predictor and one response, the Multiple Regression model relates more than one predictor and one response, and the Multivariate Regression model relates more than one predictor and more than one response. In other words, Multivariate Regression is a technique that estimates a single regression model with more than one outcome variable. When there is more than one predictor variable in a multivariate regression model, the model is a multivariate multiple regression.
+
+
+With an equation, we want
 
 <img width="376" alt="image" src="https://user-images.githubusercontent.com/98488324/156024389-4a8be34c-f41b-4f35-ae2d-d8bea23de51b.png">
 
@@ -26,14 +29,8 @@ where the weights  𝑤𝑖  are either  0  or  1.
 
 The vector of binary weights  𝑤 = (𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
 
-Critical Aspects      
-What is the simplest choice for the function  𝐹 ?       
-How do we perform variable selection?      
-How do we accomodate nonlinear relationships?      
 
-
-Variable Selection      
-In the case of multiple linear regression, we have that
+In detail, in the case of multiple linear regression, we have that
 
 <img width="381" alt="image" src="https://user-images.githubusercontent.com/98488324/156032531-d3fb814b-f8a5-460e-a74a-9081a55e6458.png">
 
