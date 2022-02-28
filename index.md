@@ -54,20 +54,16 @@ where  𝔼(𝑌)  denotes the expected value of  𝑌.
 
 
 ### Gradient Boosting
-Gradient Boosting is a combination of Gradient Descent and Boosting. 
-Fit an additive model (ensemble) 
+Gradient Boosting is a robust machine learning algorithm made up of Gradient descent and Boosting. The word ‘gradient’ implies that you can have two or more derivatives of the same function. Gradient Boosting has three main components: additive model, loss function, and a weak learner. It can do regression, classification, and ranking. 
+
+We fit an additive model (ensemble) 
 
 <img width="74" alt="image" src="https://user-images.githubusercontent.com/98488324/155919447-92691822-9966-4be1-b301-0cb6723a1485.png">
-
 in a forward stage-wise manner.
 
 In each stage, introduce a weak learner to compensate the shortcomings of existing weak learners.
 
-In Gradient Boosting,“shortcomings” are identified by gradients.
-
-Recall that, in Adaboost,“shortcomings” are identified by high-weight data points.
-
-Both high-weight data points and gradients tell us how to improve our model.
+In Gradient Boosting,“shortcomings” are identified by gradients, which tell us how to improve our model.
 
 
 Assume you have an regressor  𝐹  and, for the observation  𝑥𝑖  we make the prediction  𝐹(𝑥𝑖) . To improve the predictions, we can regard  𝐹  as a 'weak learner' and therefore train a decision tree (we can call it  ℎ ) where the new output is  𝑦𝑖−𝐹(𝑥𝑖) . Thus, there are increased chances that the new regressor
@@ -82,7 +78,7 @@ XGBoost is an abbreviation for Extreme Gradient Boost (I wrote an article that p
 
 
 
-### Applications with Real Data
+## Applications with Real Data
 Cars Data (output variable (y) is the mileage (MPG)): 
 
 ```python
@@ -258,7 +254,7 @@ The Cross-validated MSE for Extreme Gradient Boosting (XGBoost) is : 16.14075756
 Since we aim to minimize the crossvalidated mean square error (MSE) for the better results, I conclude that Extreme Gradient Boosting (XGBoost) achieved the better result than other regressions including Lowess, Boosted Lowess, and Random Forest. 
        
        
-The predictions we made for the test data:
+#### The predictions we made for the test data:
 
 ```python
 fig, ax = plt.subplots(figsize=(12,9))
@@ -334,7 +330,7 @@ Validated MAE Local Kernel Regression: $4,090.03
 Validated MAE XGBoost Regression: $4,179.17      
 
 
-#### Note about the MSE and MAE: 
+### Notes regarding the MSE and MAE: 
 The goal of any machine learning model is to evaluate the accuracy of the model. In this project, the Mean Squared Error (MSE) and the Mean Absolute Error (MAE) are examined to evaluate the performance of the model in regression analysis.
 
 The Mean Squared Error represents the average of the squared difference between the original and predicted values in the data set. It measures the variance of the residuals.
