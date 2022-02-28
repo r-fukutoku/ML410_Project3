@@ -1,12 +1,3 @@
-presentation on the concepts of Multivariate Regression Analysis and Gradient Boosting. Include a presentation of Extreme Gradient Boosting (xgboost).
-Apply the regression methods (including lowess and boosted lowess) to real data sets, such as "Cars" and "Boston Housing Data".  Record the cross-validated mean square errors and the mean absolute errors.
-
-For each method and data set report the crossvalidated mean square error and 
-determine which method is achieveng the better results.
-In this paper you should also include theoretical considerations, examples of Python coding and plots. 
-The final results should be clearly stated.
-
-
 # Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting inclding Extreme Gradient Boosting (XGBoost)
 
 ### Multivariate Regression Analysis
@@ -89,6 +80,8 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
+from google.colab import drive
+drive.mount('/content/drive')
 cars = pd.read_csv("drive/MyDrive/DATA410_AdvML/cars.csv")
 ```
 <img width="234" alt="image" src="https://user-images.githubusercontent.com/98488324/153694695-0e275da1-6379-44db-af1b-92a43d0c0544.png">
@@ -236,12 +229,85 @@ The Cross-validated Mean Squared Error for Random Forest is : 16.947624934702624
 The Cross-validated Mean Squared Error for Extreme Gradient Boosting (XGBoost) is : 16.14075756009356
 
 
+The predictions we made for the test data:
+
+
 ```python
-print("Crossvalidated mean square error of Lowess is " + str(np.mean(mse_lwr)))
+fig, ax = plt.subplots(figsize=(12,9))
+ax.set_xlim(3, 9)
+ax.set_ylim(0, 51)
+ax.scatter(x=df['rooms'], y=df['cmedv'],s=25)
+ax.plot(X_test, lm.predict(X_test), color='red',label='Linear Regression')
+ax.plot(dat_test[:,0], yhat_nn, color='lightgreen',lw=2.5,label='Neural Network')
+ax.plot(dat_test[:,0], model_lowess(dat_train,dat_test,Epanechnikov,0.53), color='orange',lw=2.5,label='Kernel Weighted Regression')
+ax.set_xlabel('Number of Rooms',fontsize=16,color='navy')
+ax.set_ylabel('House Price (Thousands of Dollars)',fontsize=16,color='navy')
+ax.set_title('Boston Housing Prices',fontsize=16,color='purple')
+ax.grid(b=True,which='major', color ='grey', linestyle='-', alpha=0.8)
+ax.grid(b=True,which='minor', color ='grey', linestyle='--', alpha=0.2)
+ax.minorticks_on()
+plt.legend()
 ```
 
 
+
+```python
+from sklearn.metrics import mean_absolute_error
+
+mae_lm = []
+
+for idxtrain, idxtest in kf.split(dat):
+  X_train = dat[idxtrain,0]
+  y_train = dat[idxtrain,1]
+  X_test  = dat[idxtest,0]
+  y_test = dat[idxtest,1]
+  lm.fit(X_train.reshape(-1,1),y_train)
+  yhat_lm = lm.predict(X_test.reshape(-1,1))
+  mae_lm.append(mean_absolute_error(y_test, yhat_lm))
+print("Validated MAE Linear Regression = ${:,.2f}".format(1000*np.mean(mae_lm)))
+
+
+mae_lk = []
+
+for idxtrain, idxtest in kf.split(dat):
+  dat_test = dat[idxtest,:]
+  y_test = dat_test[np.argsort(dat_test[:, 0]),1]
+  yhat_lk = model_lowess(dat[idxtrain,:],dat[idxtest,:],Gaussian,0.15)
+  mae_lk.append(mean_absolute_error(y_test, yhat_lk))
+print("Validated MAE Local Kernel Regression = ${:,.2f}".format(1000*np.mean(mae_lk)))
+
+
+mae_xgb = []
+
+for idxtrain, idxtest in kf.split(dat):
+  X_train = dat[idxtrain,0]
+  y_train = dat[idxtrain,1]
+  X_test  = dat[idxtest,0]
+  y_test = dat[idxtest,1]
+  model_xgb.fit(X_train.reshape(-1,1),y_train)
+  yhat_xgb = model_xgb.predict(X_test.reshape(-1,1))
+  mae_xgb.append(mean_absolute_error(y_test, yhat_xgb))
+print("Validated MAE XGBoost Regression = ${:,.2f}".format(1000*np.mean(mae_xgb)))
+```
+
+Validated MAE Linear Regression = $4,447.94
+Validated MAE Local Kernel Regression = $4,090.03
+Validated MAE XGBoost Regression = $4,179.17
+
+
 #### Final results: 
+The goal of any machine learning model is to evaluate the accuracy of the model. In this project, the Mean Squared Error (MSE) and the Mean Absolute Error (MAE) are examined to evaluate the performance of the model in regression analysis.
+
+The Mean Squared Error represents the average of the squared difference between the original and predicted values in the data set. It measures the variance of the residuals.
+
+<img width="256" alt="image" src="https://user-images.githubusercontent.com/98488324/155912406-93bcb3f3-a79d-4363-9aaf-a2a57ee9fb71.png">
+<img width="316" alt="image" src="https://user-images.githubusercontent.com/98488324/155912470-036b99ea-03f7-4849-b792-7cc8b37bacc7.png">
+
+The Mean Absolute Error represents the average of the absolute difference between the actual and predicted values in the dataset. It measures the average of the residuals in the dataset.
+
+<img width="266" alt="image" src="https://user-images.githubusercontent.com/98488324/155912365-371ad65c-258a-40ed-8f91-93a086929533.png">
+
+
 
 ```python
 print("Crossvalidated mean square error of Lowess is " + str(np.mean(mse_lwr)))
@@ -263,9 +329,7 @@ determine which method is achieveng the better results.
 ## References
 Maklin, C. (May 9, 2020). [_Medium_](https://towardsdatascience.com/xgboost-python-example-42777d01001e). (https://towardsdatascience.com/xgboost-python-example-42777d01001e)
 
-
-Sicotte, X. (May 24, 2018).
-[_Data Blog_](https://xavierbourretsicotte.github.io/loess.html). (https://xavierbourretsicotte.github.io/loess.html)
+Chugh, A. (Dec 8, 2020). [_Medium_](https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e). (https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e)
 
 
 ##### Jekyll Themes
