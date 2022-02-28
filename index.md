@@ -60,13 +60,6 @@ so we get
 
 where  𝔼(𝑌)  denotes the expected value of  𝑌. 
 
-The questions that we explore are:
-
-Why and how we know that we need variable selection.
-
-How we measure the effects of variable selection on the model.
-
-How to determine if the method of selecting a sparsity pattern is working in the context of our data.
 
 
 ### Gradient Boosting
@@ -85,6 +78,7 @@ By default, the decision trees we use here will make their predictions based on 
 
 #### Extreme Gradient Boosting (xgboost)
 XGBoost is short for Extreme Gradient Boost (I wrote an article that provides the gist of gradient boost here). Unlike Gradient Boost, XGBoost makes use of regularization parameters that helps against overfitting.
+
 
 
 ### Applications with Real Data
