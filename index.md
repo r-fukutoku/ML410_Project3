@@ -71,7 +71,7 @@ is better than the old one,  𝐹.
 ### Extreme Gradient Boosting (XGBoost)
 XGBoost stands for eXtreme Gradient Boosting, and it is an implementation of gradient boosted decision trees designed for speed and performance. Unlike Gradient Boost, XGBoost makes use of regularization parameters that helps against overfitting.     
 
-The two reasons to use XGBoost are also the two goals of the project: execution speed and model performance. It is really fast when compared to other implementations of gradient boosting.
+The two reasons to use XGBoost are also the two goals of the project: execution speed and model performance. It is really fast when compared to other implementations of gradient boosting, and it dominates structured or tabular datasets on classification and regression predictive modeling problems due to its high model performance.
 
 
 
