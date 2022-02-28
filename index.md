@@ -1,6 +1,9 @@
 # Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting including XGBoost
 
 ### Multivariate Regression Analysis
+As the name implies, multivariate regression is a technique that estimates a single regression model with more than one outcome variable. When there is more than one predictor variable in a multivariate regression model, the model is a multivariate multiple regression.
+
+
 Multivariate Regression Analysis is a 
 
 In general we want
@@ -75,6 +78,21 @@ The two reasons to use XGBoost are also the two goals of the project: execution 
 
 
 
+### Notes regarding the MSE and MAE: 
+The goal of any machine learning model is to evaluate the accuracy of the model. In this project, the Mean Squared Error (MSE) and the Mean Absolute Error (MAE) are examined to evaluate the performance of the model in regression analysis.
+
+The Mean Squared Error represents the average of the squared difference between the original and predicted values in the data set. It measures the variance of the residuals.
+
+<img width="256" alt="image" src="https://user-images.githubusercontent.com/98488324/155912406-93bcb3f3-a79d-4363-9aaf-a2a57ee9fb71.png">
+<img width="312" alt="image" src="https://user-images.githubusercontent.com/98488324/155914108-49ac10e0-6783-498e-b14a-9da52bf29af8.png">
+
+
+The Mean Absolute Error represents the average of the absolute difference between the actual and predicted values in the dataset. It measures the average of the residuals in the dataset.
+
+<img width="266" alt="image" src="https://user-images.githubusercontent.com/98488324/155912365-371ad65c-258a-40ed-8f91-93a086929533.png">
+
+
+
 ## Applications with Real Data
 Cars Data (output variable (y) is the mileage (MPG)): 
 
@@ -104,7 +122,7 @@ df = pd.read_csv("drive/MyDrive/DATA410_AdvML/Boston Housing Prices.csv")
 <img width="1179" alt="image" src="https://user-images.githubusercontent.com/98488324/155917389-b3c4e978-eac0-4f07-8c90-961fdff87ef1.png">
 
 
-#### Multivariate Regression Analysis:
+### Regression Analysis:
 Import libraries and create functions:
 
 ```python
@@ -196,7 +214,7 @@ def boosted_lwr(X, y, xnew, kern, tau, intercept):
   return output 
 ```
 
-Apply Cars data:
+#### Apply Cars data:
 
 ```python
 X = cars[['ENG','CYL','WGT']].values
@@ -251,7 +269,7 @@ The Cross-validated MSE for Extreme Gradient Boosting (XGBoost) is : 16.14075756
 Since we aim to minimize the crossvalidated mean square error (MSE) for the better results, I conclude that Extreme Gradient Boosting (XGBoost) achieved the better result than other regressions including Lowess, Boosted Lowess, and Random Forest. 
        
        
-#### The predictions we made for the test data:
+##### The predictions we made for the test data:
 
 ```python
 fig, ax = plt.subplots(figsize=(12,9))
@@ -271,7 +289,7 @@ plt.legend()
 ```
 
 
-Apply Boston Housing data:
+#### Apply Boston Housing data:
 
 ```python
 from sklearn.metrics import mean_absolute_error
@@ -325,20 +343,6 @@ print("Validated MAE XGBoost Regression: ${:,.2f}".format(1000*np.mean(mae_xgb))
 Validated MAE Linear Regression: $4,447.94      
 Validated MAE Local Kernel Regression: $4,090.03      
 Validated MAE XGBoost Regression: $4,179.17      
-
-
-### Notes regarding the MSE and MAE: 
-The goal of any machine learning model is to evaluate the accuracy of the model. In this project, the Mean Squared Error (MSE) and the Mean Absolute Error (MAE) are examined to evaluate the performance of the model in regression analysis.
-
-The Mean Squared Error represents the average of the squared difference between the original and predicted values in the data set. It measures the variance of the residuals.
-
-<img width="256" alt="image" src="https://user-images.githubusercontent.com/98488324/155912406-93bcb3f3-a79d-4363-9aaf-a2a57ee9fb71.png">
-<img width="312" alt="image" src="https://user-images.githubusercontent.com/98488324/155914108-49ac10e0-6783-498e-b14a-9da52bf29af8.png">
-
-
-The Mean Absolute Error represents the average of the absolute difference between the actual and predicted values in the dataset. It measures the average of the residuals in the dataset.
-
-<img width="266" alt="image" src="https://user-images.githubusercontent.com/98488324/155912365-371ad65c-258a-40ed-8f91-93a086929533.png">
 
 
 
