@@ -72,7 +72,9 @@ is better than the old one,  𝐹.
 
 
 ### Extreme Gradient Boosting (XGBoost)
-XGBoost is an abbreviation for Extreme Gradient Boost (I wrote an article that provides the gist of gradient boost here). Unlike Gradient Boost, XGBoost makes use of regularization parameters that helps against overfitting.       
+XGBoost stands for eXtreme Gradient Boosting, and it is an implementation of gradient boosted decision trees designed for speed and performance. Unlike Gradient Boost, XGBoost makes use of regularization parameters that helps against overfitting.     
+
+
 
 
 
@@ -344,7 +346,7 @@ The Mean Absolute Error represents the average of the absolute difference betwee
 
 
 ## References
-Maklin, C. (May 9, 2020). [_Medium_](https://towardsdatascience.com/xgboost-python-example-42777d01001e). (https://towardsdatascience.com/xgboost-python-example-42777d01001e)
+Brownlee, J. (August 17, 2016). A Gentle Introduction to XGBoost for Applied Machine Learning. [_Machine Learning Mastery_](https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/). (https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/)
 
 Chugh, A. (Dec 8, 2020). [_Medium_](https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e). (https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e)
 
