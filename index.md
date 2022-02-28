@@ -18,7 +18,8 @@ Variable Selection:
 
 - To represent variable selection in a functional way, we can think of multiplying each variable from the model by a binary weight, a weight of  0  means the feature is not important and a weight of  1  means that it is important:
 
-<img width="812" alt="image" src="https://user-images.githubusercontent.com/98488324/156032452-1d04f1ac-f6e6-4102-a9dd-c4ff22c61602.png"> where the weights  𝑤𝑖  are either  0  or  1. 
+<img width="521" alt="image" src="https://user-images.githubusercontent.com/98488324/156049017-24155dca-c797-465d-8fec-b56d515cd07a.png">
+where the weights  𝑤𝑖  are either  0  or  1. 
 
 The vector of binary weights  𝑤=(𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
 
@@ -41,7 +42,7 @@ and we want the coefficients  𝛽.
 
 The "classical" way of solving is:
 
-<img width="623" alt="image" src="https://user-images.githubusercontent.com/98488324/156032766-e9890392-f97b-4f36-b00e-e6eed29f1cc4.png">
+<img width="222" alt="image" src="https://user-images.githubusercontent.com/98488324/156048907-6a5b81e5-6731-4098-9ea4-ad8f4403700b.png">
 
 so we get
 
