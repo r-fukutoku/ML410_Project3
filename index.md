@@ -223,10 +223,10 @@ print('The Cross-validated Mean Squared Error for Boosted Lowess is : '+str(np.m
 print('The Cross-validated Mean Squared Error for Random Forest is : '+str(np.mean(mse_rf)))
 print('The Cross-validated Mean Squared Error for Extreme Gradient Boosting (XGBoost) is : '+str(np.mean(mse_xgb)))
 ```
-The Cross-validated Mean Squared Error for Lowess is : 17.025426125745327
-The Cross-validated Mean Squared Error for Boosted Lowess is : 16.656353893436698
-The Cross-validated Mean Squared Error for Random Forest is : 16.947624934702624
-The Cross-validated Mean Squared Error for Extreme Gradient Boosting (XGBoost) is : 16.14075756009356
+The Cross-validated Mean Squared Error for Lowess is : 17.025426125745327      
+The Cross-validated Mean Squared Error for Boosted Lowess is : 16.656353893436698      
+The Cross-validated Mean Squared Error for Random Forest is : 16.947624934702624     
+The Cross-validated Mean Squared Error for Extreme Gradient Boosting (XGBoost) is : 16.14075756009356     
 
 
 The predictions we made for the test data:
