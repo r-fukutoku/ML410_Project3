@@ -273,9 +273,9 @@ fig, ax = plt.subplots(figsize=(12,9))
 ax.set_xlim(3, 9)
 ax.set_ylim(0, 51)
 ax.scatter(x=df['rooms'], y=df['cmedv'],s=25)
-ax.plot(X_test, lm.predict(X_test), color='red',label='Linear Regression')
-ax.plot(dat_test[:,0], yhat_nn, color='lightgreen',lw=2.5,label='Neural Network')
-ax.plot(dat_test[:,0], model_lowess(dat_train,dat_test,Epanechnikov,0.53), color='orange',lw=2.5,label='Kernel Weighted Regression')
+# ax.plot(X_test, lm.predict(X_test), color='red',label='Linear Regression')
+# ax.plot(dat_test[:,0], yhat_nn, color='lightgreen',lw=2.5,label='Neural Network')
+# ax.plot(dat_test[:,0], model_lowess(dat_train,dat_test,Epanechnikov,0.53), color='orange',lw=2.5,label='Kernel Weighted Regression')
 ax.set_xlabel('Number of Rooms',fontsize=16,color='navy')
 ax.set_ylabel('House Price (Thousands of Dollars)',fontsize=16,color='navy')
 ax.set_title('Boston Housing Prices',fontsize=16,color='purple')
@@ -284,7 +284,7 @@ ax.grid(b=True,which='minor', color ='grey', linestyle='--', alpha=0.2)
 ax.minorticks_on()
 plt.legend()
 ```
-<img width="763" alt="image" src="https://user-images.githubusercontent.com/98488324/156029484-05ebb189-e26b-4bb2-aefa-9d74ab31efdd.png">
+<img width="735" alt="image" src="https://user-images.githubusercontent.com/98488324/156031673-ff6ee123-5b70-4bda-b8c1-9183d3c91266.png">
 
 
 #### Apply Boston Housing data:
