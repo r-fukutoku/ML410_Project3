@@ -54,7 +54,12 @@ where  𝔼(𝑌)  denotes the expected value of  𝑌.
 
 
 ### Gradient Boosting
-Gradient Boosting is a robust machine learning algorithm made up of Gradient descent and Boosting. The word "gradient" implies that you can have two or more derivatives of the same function. Gradient Boosting has three main components: additive model, loss function, and a weak learner. It can do regression, classification, and ranking. 
+Gradient Boosting is a robust machine learning algorithm made up of Gradient descent and Boosting. The word "gradient" implies that you can have two or more derivatives of the same function. 
+Boosting is an ensemble technique where new models are added to correct the errors made by existing models. Models are added sequentially until no further improvements can be made. A popular example is the AdaBoost algorithm that weights data points that are hard to predict.
+
+Gradient boosting is an approach where new models are created that predict the residuals or errors of prior models and then added together to make the final prediction. It is called gradient boosting because it uses a gradient descent algorithm to minimize the loss when adding new models.
+
+Gradient Boosting has three main components: additive model, loss function, and a weak learner. This approach supports regression, classification, and ranking predictive modeling problems. 
 
 We fit an additive model (ensemble) 
 
@@ -74,7 +79,7 @@ is better than the old one,  𝐹.
 ### Extreme Gradient Boosting (XGBoost)
 XGBoost stands for eXtreme Gradient Boosting, and it is an implementation of gradient boosted decision trees designed for speed and performance. Unlike Gradient Boost, XGBoost makes use of regularization parameters that helps against overfitting.     
 
-
+The two reasons to use XGBoost are also the two goals of the project: execution speed and model performance. It is really fast when compared to other implementations of gradient boosting.
 
 
 
@@ -348,7 +353,7 @@ The Mean Absolute Error represents the average of the absolute difference betwee
 ## References
 Brownlee, J. (August 17, 2016). A Gentle Introduction to XGBoost for Applied Machine Learning. [_Machine Learning Mastery_](https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/). (https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/)
 
-Chugh, A. (Dec 8, 2020). [_Medium_](https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e). (https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e)
+Chugh, A. (Dec 8, 2020). MAE, MSE, RMSE, Coefficient of Determination, Adjusted R Squared — Which Metric is Better? [_Medium_](https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e). (https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e)
 
 Li, C. A Gentle Introduction to Gradient Boosting. [gradient_boosting.pdf](https://github.com/r-fukutoku/Project3/files/8154698/gradient_boosting.pdf)
 
