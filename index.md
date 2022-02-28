@@ -265,26 +265,6 @@ The Cross-validated MSE for Extreme Gradient Boosting (XGBoost) is : 16.14075756
 
 Since we aim to minimize the crossvalidated mean square error (MSE) for the better results, I conclude that Extreme Gradient Boosting (XGBoost) achieved the better result than other regressions including Lowess, Boosted Lowess, and Random Forest. 
        
-       
-##### The predictions we made for the test data:
-
-```python
-fig, ax = plt.subplots(figsize=(12,9))
-ax.set_xlim(3, 9)
-ax.set_ylim(0, 51)
-ax.scatter(x=df['rooms'], y=df['cmedv'],s=25)
-# ax.plot(X_test, lm.predict(X_test), color='red',label='Linear Regression')
-# ax.plot(dat_test[:,0], yhat_nn, color='lightgreen',lw=2.5,label='Neural Network')
-# ax.plot(dat_test[:,0], model_lowess(dat_train,dat_test,Epanechnikov,0.53), color='orange',lw=2.5,label='Kernel Weighted Regression')
-ax.set_xlabel('Number of Rooms',fontsize=16,color='navy')
-ax.set_ylabel('House Price (Thousands of Dollars)',fontsize=16,color='navy')
-ax.set_title('Boston Housing Prices',fontsize=16,color='purple')
-ax.grid(b=True,which='major', color ='grey', linestyle='-', alpha=0.8)
-ax.grid(b=True,which='minor', color ='grey', linestyle='--', alpha=0.2)
-ax.minorticks_on()
-plt.legend()
-```
-<img width="735" alt="image" src="https://user-images.githubusercontent.com/98488324/156031673-ff6ee123-5b70-4bda-b8c1-9183d3c91266.png">
 
 
 #### Apply Boston Housing data:
@@ -336,6 +316,25 @@ for idxtrain, idxtest in kf.split(dat):
   mae_xgb.append(mean_absolute_error(y_test, yhat_xgb))
 print("Validated MAE XGBoost Regression: ${:,.2f}".format(1000*np.mean(mae_xgb)))
 ```
+
+```python
+fig, ax = plt.subplots(figsize=(12,9))
+ax.set_xlim(3, 9)
+ax.set_ylim(0, 51)
+ax.scatter(x=df['rooms'], y=df['cmedv'],s=25)
+# ax.plot(X_test, lm.predict(X_test), color='red',label='Linear Regression')
+# ax.plot(dat_test[:,0], yhat_nn, color='lightgreen',lw=2.5,label='Neural Network')
+# ax.plot(dat_test[:,0], model_lowess(dat_train,dat_test,Epanechnikov,0.53), color='orange',lw=2.5,label='Kernel Weighted Regression')
+ax.set_xlabel('Number of Rooms',fontsize=16,color='navy')
+ax.set_ylabel('House Price (Thousands of Dollars)',fontsize=16,color='navy')
+ax.set_title('Boston Housing Prices',fontsize=16,color='purple')
+ax.grid(b=True,which='major', color ='grey', linestyle='-', alpha=0.8)
+ax.grid(b=True,which='minor', color ='grey', linestyle='--', alpha=0.2)
+ax.minorticks_on()
+plt.legend()
+```
+<img width="735" alt="image" src="https://user-images.githubusercontent.com/98488324/156031673-ff6ee123-5b70-4bda-b8c1-9183d3c91266.png">
+
 #### Final results: 
 
 Validated MAE Linear Regression: $4,447.94      
