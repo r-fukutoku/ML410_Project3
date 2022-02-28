@@ -98,7 +98,7 @@ from google.colab import drive
 drive.mount('/content/drive')
 df = pd.read_csv("drive/MyDrive/DATA410_AdvML/Boston Housing Prices.csv")
 ```
-<img width="1185" alt="image" src="https://user-images.githubusercontent.com/98488324/155916452-8aad52b7-41b7-4e5e-941b-2842aac4dd2c.png">
+<img width="1179" alt="image" src="https://user-images.githubusercontent.com/98488324/155917389-b3c4e978-eac0-4f07-8c90-961fdff87ef1.png">
 
 
 #### Multivariate Regression Analysis:
