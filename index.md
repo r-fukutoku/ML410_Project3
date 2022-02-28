@@ -59,15 +59,7 @@ Boosting is an ensemble technique where new models are added to correct the erro
 
 Gradient boosting is an approach where new models are created that predict the residuals or errors of prior models and then added together to make the final prediction. It is called gradient boosting because it uses a gradient descent algorithm to minimize the loss when adding new models.
 
-Gradient Boosting has three main components: additive model, loss function, and a weak learner. This approach supports regression, classification, and ranking predictive modeling problems. 
-
-We fit an additive model (ensemble) 
-
-<img width="74" alt="image" src="https://user-images.githubusercontent.com/98488324/155919447-92691822-9966-4be1-b301-0cb6723a1485.png">
-
-in a forward stage-wise manner.       
-In each stage, introduce a weak learner to compensate the shortcomings of existing weak learners. In Gradient Boosting, "shortcomings" are identified by gradients, which tell us how to improve our model.       
-
+It has three main components: additive model, loss function, and a weak learner. This approach supports regression, classification, and ranking predictive modeling problems.       
 
 More specifically, here we assume we have an regressor  𝐹  and, for the observation  𝑥𝑖  we make the prediction  𝐹(𝑥𝑖) . To improve the predictions, we can regard  𝐹  as a "weak learner" and therefore train a decision tree (we can call it  ℎ ) where the new output is  𝑦𝑖−𝐹(𝑥𝑖) . Thus, there are increased chances that the new regressor
 
