@@ -54,17 +54,17 @@ where  𝔼(𝑌)  denotes the expected value of  𝑌.
 
 
 ### Gradient Boosting
-Gradient Boosting is a robust machine learning algorithm made up of Gradient descent and Boosting. The word ‘gradient’ implies that you can have two or more derivatives of the same function. Gradient Boosting has three main components: additive model, loss function, and a weak learner. It can do regression, classification, and ranking. 
+Gradient Boosting is a robust machine learning algorithm made up of Gradient descent and Boosting. The word "gradient" implies that you can have two or more derivatives of the same function. Gradient Boosting has three main components: additive model, loss function, and a weak learner. It can do regression, classification, and ranking. 
 
 We fit an additive model (ensemble) 
 
 <img width="74" alt="image" src="https://user-images.githubusercontent.com/98488324/155919447-92691822-9966-4be1-b301-0cb6723a1485.png">
 
 in a forward stage-wise manner.       
-In each stage, introduce a weak learner to compensate the shortcomings of existing weak learners. In Gradient Boosting, “shortcomings” are identified by gradients, which tell us how to improve our model.       
+In each stage, introduce a weak learner to compensate the shortcomings of existing weak learners. In Gradient Boosting, "shortcomings" are identified by gradients, which tell us how to improve our model.       
 
 
-More specifically, here we assume we have an regressor  𝐹  and, for the observation  𝑥𝑖  we make the prediction  𝐹(𝑥𝑖) . To improve the predictions, we can regard  𝐹  as a 'weak learner' and therefore train a decision tree (we can call it  ℎ ) where the new output is  𝑦𝑖−𝐹(𝑥𝑖) . Thus, there are increased chances that the new regressor
+More specifically, here we assume we have an regressor  𝐹  and, for the observation  𝑥𝑖  we make the prediction  𝐹(𝑥𝑖) . To improve the predictions, we can regard  𝐹  as a "weak learner" and therefore train a decision tree (we can call it  ℎ ) where the new output is  𝑦𝑖−𝐹(𝑥𝑖) . Thus, there are increased chances that the new regressor
 
 <img width="85" alt="image" src="https://user-images.githubusercontent.com/98488324/156001320-66ec691e-d224-4d66-baac-5385ed3ce2a4.png">
 is better than the old one,  𝐹. 
