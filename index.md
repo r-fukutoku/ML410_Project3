@@ -298,10 +298,13 @@ Validated MAE XGBoost Regression = $4,179.17
 The goal of any machine learning model is to evaluate the accuracy of the model. In this project, the Mean Squared Error (MSE) and the Mean Absolute Error (MAE) are examined to evaluate the performance of the model in regression analysis.
 
 The Mean Squared Error represents the average of the squared difference between the original and predicted values in the data set. It measures the variance of the residuals.
+
 <img width="256" alt="image" src="https://user-images.githubusercontent.com/98488324/155912406-93bcb3f3-a79d-4363-9aaf-a2a57ee9fb71.png">
 <img width="312" alt="image" src="https://user-images.githubusercontent.com/98488324/155914108-49ac10e0-6783-498e-b14a-9da52bf29af8.png">
 
+
 The Mean Absolute Error represents the average of the absolute difference between the actual and predicted values in the dataset. It measures the average of the residuals in the dataset.
+
 <img width="266" alt="image" src="https://user-images.githubusercontent.com/98488324/155912365-371ad65c-258a-40ed-8f91-93a086929533.png">
 
 
