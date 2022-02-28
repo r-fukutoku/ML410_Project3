@@ -73,7 +73,7 @@ XGBoost is short for Extreme Gradient Boost (I wrote an article that provides th
 
 
 ### Applications with Real Data
-Cars Data (output varable (y) is the mileage (MPG)): 
+Cars Data (output variable (y) is the mileage (MPG)): 
 
 ```python
 import numpy as np
@@ -85,6 +85,20 @@ drive.mount('/content/drive')
 cars = pd.read_csv("drive/MyDrive/DATA410_AdvML/cars.csv")
 ```
 <img width="234" alt="image" src="https://user-images.githubusercontent.com/98488324/153694695-0e275da1-6379-44db-af1b-92a43d0c0544.png">
+
+
+Boston Housing Data (output variable (y) is the number of rooms (cmedv)): 
+
+```python
+import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import pandas as pd
+from google.colab import drive
+drive.mount('/content/drive')
+df = pd.read_csv("drive/MyDrive/DATA410_AdvML/Boston Housing Prices.csv")
+```
+<img width="1185" alt="image" src="https://user-images.githubusercontent.com/98488324/155916452-8aad52b7-41b7-4e5e-941b-2842aac4dd2c.png">
 
 
 #### Multivariate Regression Analysis:
@@ -179,7 +193,7 @@ def boosted_lwr(X, y, xnew, kern, tau, intercept):
   return output 
 ```
 
-Apply cars data:
+Apply Cars data:
 
 ```python
 X = cars[['ENG','CYL','WGT']].values
@@ -249,9 +263,19 @@ plt.legend()
 ```
 
 
+Apply Boston Housing data:
 
 ```python
 from sklearn.metrics import mean_absolute_error
+
+features = ['crime','rooms','residential','industrial','nox','older','distance','highway','tax','ptratio','lstat']
+X = np.array(df[features])
+y = np.array(df['cmedv']).reshape(-1,1)
+dat = np.concatenate([X,y], axis=1)
+
+from sklearn.model_selection import train_test_split as tts
+dat_train, dat_test = tts(dat, test_size=0.3, random_state=1234)
+
 
 mae_lm = []
 
