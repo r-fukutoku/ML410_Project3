@@ -26,11 +26,11 @@ For variable selection:
 
 where the weights  𝑤𝑖  are either  0  or  1. 
 
-
 The vector of binary weights  𝑤 = (𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
 
 
-In detail, in the case of multiple linear regression, we have that
+#### Variable Selection Example
+In the case of multiple linear regression, we have that
 
 <img width="381" alt="image" src="https://user-images.githubusercontent.com/98488324/156032531-d3fb814b-f8a5-460e-a74a-9081a55e6458.png">
 
@@ -42,11 +42,11 @@ Therefore, we assume
 
 and we want the coefficients  𝛽. 
 
-The "classical" way of solving is:
+The "classical" way of solving this is:
 
 <img width="222" alt="image" src="https://user-images.githubusercontent.com/98488324/156048907-6a5b81e5-6731-4098-9ea4-ad8f4403700b.png">
 
-and we get
+and we obtain
 
 <img width="222" alt="image" src="https://user-images.githubusercontent.com/98488324/156032618-f6a7a935-e366-4adc-8c30-f62adb920e9c.png">
 
