@@ -42,7 +42,7 @@ Therefore, we assume
 
 and we want the coefficients  𝛽. 
 
-The "classical" way of solving this is:
+The "classical" way of solving for 𝛽 is:
 
 <img width="222" alt="image" src="https://user-images.githubusercontent.com/98488324/156048907-6a5b81e5-6731-4098-9ea4-ad8f4403700b.png">
 
