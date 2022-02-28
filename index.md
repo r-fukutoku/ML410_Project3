@@ -289,9 +289,9 @@ for idxtrain, idxtest in kf.split(dat):
 print("Validated MAE XGBoost Regression = ${:,.2f}".format(1000*np.mean(mae_xgb)))
 ```
 
-Validated MAE Linear Regression = $4,447.94
-Validated MAE Local Kernel Regression = $4,090.03
-Validated MAE XGBoost Regression = $4,179.17
+Validated MAE Linear Regression = $4,447.94      
+Validated MAE Local Kernel Regression = $4,090.03      
+Validated MAE XGBoost Regression = $4,179.17      
 
 
 #### Final results: 
@@ -305,6 +305,7 @@ The Mean Squared Error represents the average of the squared difference between 
 The Mean Absolute Error represents the average of the absolute difference between the actual and predicted values in the dataset. It measures the average of the residuals in the dataset.
 
 <img width="266" alt="image" src="https://user-images.githubusercontent.com/98488324/155912365-371ad65c-258a-40ed-8f91-93a086929533.png">
+
 
 
 
