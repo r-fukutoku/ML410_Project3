@@ -67,7 +67,7 @@ In Gradient Boosting,“shortcomings” are identified by gradients.
 
 Recall that, in Adaboost,“shortcomings” are identified by high-weight data points.
 
-I Both high-weight data points and gradients tell us how to improve our model.
+Both high-weight data points and gradients tell us how to improve our model.
 
 
 Assume you have an regressor  𝐹  and, for the observation  𝑥𝑖  we make the prediction  𝐹(𝑥𝑖) . To improve the predictions, we can regard  𝐹  as a 'weak learner' and therefore train a decision tree (we can call it  ℎ ) where the new output is  𝑦𝑖−𝐹(𝑥𝑖) . Thus, there are increased chances that the new regressor
