@@ -13,7 +13,7 @@ With an equation, we want
 where  𝐹  represents the model (regressor) we consider.
 
 
-Variable Selection:      
+For variable selection:      
 - We want to select only the features that are really important for our model.
 
 - If the functional input-output model is  𝑌 = 𝐹(𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝), then we imagine that it is very possible that only a subset of the variables  𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝  are important and we need to disconsider (eliminate from the model) those that are not relevant.
