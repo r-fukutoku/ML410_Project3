@@ -8,6 +8,7 @@ In general, we want
 <img width="376" alt="image" src="https://user-images.githubusercontent.com/98488324/156024389-4a8be34c-f41b-4f35-ae2d-d8bea23de51b.png">
 where  𝐹  represents the model (regressor) we consider.
 
+
 Variable Selection:      
 - We want to select only the features that are really important for our model.
 
@@ -17,8 +18,7 @@ Variable Selection:
 
 - To represent variable selection in a functional way, we can think of multiplying each variable from the model by a binary weight, a weight of  0  means the feature is not important and a weight of  1  means that it is important:
 
-<img width="812" alt="image" src="https://user-images.githubusercontent.com/98488324/156032452-1d04f1ac-f6e6-4102-a9dd-c4ff22c61602.png">
-where the weights  𝑤𝑖  are either  0  or  1. 
+<img width="812" alt="image" src="https://user-images.githubusercontent.com/98488324/156032452-1d04f1ac-f6e6-4102-a9dd-c4ff22c61602.png"> where the weights  𝑤𝑖  are either  0  or  1. 
 
 The vector of binary weights  𝑤=(𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
 
@@ -41,7 +41,7 @@ and we want the coefficients  𝛽.
 
 The "classical" way of solving is:
 
-<img width="236" alt="image" src="https://user-images.githubusercontent.com/98488324/156032597-0b0fbefb-0cc8-4d5a-b44d-8c50a0faeebf.png">
+<img width="623" alt="image" src="https://user-images.githubusercontent.com/98488324/156032766-e9890392-f97b-4f36-b00e-e6eed29f1cc4.png">
 
 so we get
 
