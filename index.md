@@ -3,52 +3,49 @@
 ### Multivariate Regression Analysis
 Multivariate regression is a technique that estimates a single regression model with more than one outcome variable as the name implies. When there is more than one predictor variable in a multivariate regression model, the model is a multivariate multiple regression.
 
-
 In general, we want
 
 <img width="376" alt="image" src="https://user-images.githubusercontent.com/98488324/156024389-4a8be34c-f41b-4f35-ae2d-d8bea23de51b.png">
 where  𝐹  represents the model (regressor) we consider.
 
 Variable Selection:      
-We want to select only the features that are really important for our model.
+- We want to select only the features that are really important for our model.
 
-If the functional input-output model is  𝑌=𝐹(𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝) , then we imagine that it is very possible that only a subset of the variables  𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝  are important and we need to disconsider (eliminate from the model) those that are not relevant.
+- If the functional input-output model is  𝑌=𝐹(𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝) , then we imagine that it is very possible that only a subset of the variables  𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝  are important and we need to disconsider (eliminate from the model) those that are not relevant.
 
-Programming and algorithms are based on equations, functions and statement evaluations.
+- Programming and algorithms are based on equations, functions and statement evaluations.
 
-To represent variable selection in a functional way, we can think of multiplying each variable from the model by a binary weight, a weight of  0  means the feature is not important and a weight of  1  means that it is important:
+- To represent variable selection in a functional way, we can think of multiplying each variable from the model by a binary weight, a weight of  0  means the feature is not important and a weight of  1  means that it is important:
 
-𝑌=𝐹(𝑤1⋅𝑋1,𝑤2⋅𝑋2,𝑤3⋅𝑋3,𝑤4⋅𝑋4,𝑤5⋅𝑋5...𝑤𝑝⋅𝑋𝑝) 
-
+<img width="812" alt="image" src="https://user-images.githubusercontent.com/98488324/156032452-1d04f1ac-f6e6-4102-a9dd-c4ff22c61602.png">
 where the weights  𝑤𝑖  are either  0  or  1. 
 
 The vector of binary weights  𝑤=(𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
 
 Critical Aspects      
-What is the simplest choice for the function  𝐹 ?
-How do we perform variable selection?
-How do we accomodate nonlinear relationships?
+What is the simplest choice for the function  𝐹 ?       
+How do we perform variable selection?      
+How do we accomodate nonlinear relationships?      
 
 
 Variable Selection      
-In the case of multiple linear regression we have that
+In the case of multiple linear regression, we have that
 
-𝐹(𝑋1,𝑋2,...𝑋𝑝)=𝛽1𝑋1+𝛽2𝑋2+...𝛽𝑝𝑋𝑝 
-
+<img width="381" alt="image" src="https://user-images.githubusercontent.com/98488324/156032531-d3fb814b-f8a5-460e-a74a-9081a55e6458.png">
 and the sparsity pattern means that a subset of the  𝛽1,𝛽2,...𝛽𝑝  are equal to  0. 
 
 So we assume
 
-𝑌≈𝑋⋅𝛽+𝜎𝜖 
-
+<img width="141" alt="image" src="https://user-images.githubusercontent.com/98488324/156032562-16d6669a-0996-4bb7-aa9b-a178f9c3a02a.png">
 and we want the coefficients  𝛽. 
 
 The "classical" way of solving is:
 
-𝑋𝑡⋅𝑌≈𝑋𝑡𝑋⋅𝛽+𝜎𝑋𝑡𝜖 
-so we get
-𝔼(𝛽)=(𝑋𝑡𝑋)−1𝑋𝑡⋅𝔼(𝑌) 
+<img width="236" alt="image" src="https://user-images.githubusercontent.com/98488324/156032597-0b0fbefb-0cc8-4d5a-b44d-8c50a0faeebf.png">
 
+so we get
+
+<img width="222" alt="image" src="https://user-images.githubusercontent.com/98488324/156032618-f6a7a935-e366-4adc-8c30-f62adb920e9c.png">
 where  𝔼(𝑌)  denotes the expected value of  𝑌. 
 
 
