@@ -7,7 +7,7 @@ In this paper you should also include theoretical considerations, examples of Py
 The final results should be clearly stated.
 
 
-# Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting inclding Extreme Gradient Boosting (xgboost)
+# Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting inclding Extreme Gradient Boosting (XGBoost)
 
 ### Multivariate Regression Analysis
 Multivariate Regression Analysis is a 
@@ -76,7 +76,7 @@ is better than the old one,  𝐹.
 By default, the decision trees we use here will make their predictions based on the mean value of the target within each leaf of the tree, and the splitting criteria will be based on minimizing the mean square error, MSE.
 
 
-#### Extreme Gradient Boosting (xgboost)
+#### Extreme Gradient Boosting (XGBoost)
 XGBoost is short for Extreme Gradient Boost (I wrote an article that provides the gist of gradient boost here). Unlike Gradient Boost, XGBoost makes use of regularization parameters that helps against overfitting.
 
 
@@ -95,118 +95,151 @@ cars = pd.read_csv("drive/MyDrive/DATA410_AdvML/cars.csv")
 
 
 #### Multivariate Regression Analysis:
+Import libraries and create functions:
 
 ```python
-%matplotlib inline
-%config InlineBackend.figure_format = 'retina'
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-mpl.rcParams['figure.dpi'] = 120
-
 # import libraries
-import numpy as np
-import pandas as pd
-from math import ceil
-from scipy import linalg
-import matplotlib.pyplot as plt
-from scipy.interpolate import interp1d
+from scipy.linalg import lstsq
+from scipy.sparse.linalg import lsmr
+from scipy.interpolate import interp1d, griddata, LinearNDInterpolator, NearestNDInterpolator
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import KFold, train_test_split as tts
+from sklearn.metrics import mean_squared_error as mse
+from sklearn.preprocessing import StandardScaler
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import LinearRegression, Lasso, Ridge, ElasticNet
+from matplotlib import pyplot
+import xgboost as xgb
 
 # Tricubic Kernel
-def tricubic(x):
-  return np.where(np.abs(x)>1,0,70/81*(1-np.abs(x)**3)**3)
+def Tricubic(x):
+  if len(x.shape) == 1:
+    x = x.reshape(-1,1)
+  d = np.sqrt(np.sum(x**2,axis=1))
+  return np.where(d>1,0,70/81*(1-d**3)**3)
 
-# Locally Weighted Regression
-def lowess_reg(x, y, xnew, kern, tau):
+# Quartic Kernel
+def Quartic(x):
+  if len(x.shape) == 1:
+    x = x.reshape(-1,1)
+  d = np.sqrt(np.sum(x**2,axis=1))
+  return np.where(d>1,0,15/16*(1-d**2)**2)
+
+# Epanechnikov Kernel
+def Epanechnikov(x):
+  if len(x.shape) == 1:
+    x = x.reshape(-1,1)
+  d = np.sqrt(np.sum(x**2,axis=1))
+  return np.where(d>1,0,3/4*(1-d**2))
+  
+# defining the kernel local regression model
+def lw_reg(X, y, xnew, kern, tau, intercept):
     # tau is called bandwidth K((x-x[i])/(2*tau))
-    # IMPORTANT: we expect x to the sorted increasingly
-    n = len(x)
+    n = len(X) # the number of observations
     yest = np.zeros(n)
 
-    #Initializing all weights from the bell shape kernel function    
-    w = np.array([kern((x - x[i])/(2*tau)) for i in range(n)])     
+    if len(y.shape)==1: # here we make column vectors
+      y = y.reshape(-1,1)
+
+    if len(X.shape)==1:
+      X = X.reshape(-1,1)
     
-    #Looping through all x-points
-    for i in range(n):
-        weights = w[:, i]
-        b = np.array([np.sum(weights * y), np.sum(weights * y * x)])
-        A = np.array([[np.sum(weights), np.sum(weights * x)],
-                    [np.sum(weights * x), np.sum(weights * x * x)]])
+    if intercept:
+      X1 = np.column_stack([np.ones((len(X),1)),X])
+    else:
+      X1 = X
+
+    w = np.array([kern((X - X[i])/(2*tau)) for i in range(n)]) # here we compute n vectors of weights
+
+    #Looping through all X-points
+    for i in range(n):          
+        W = np.diag(w[:,i])
+        b = np.transpose(X1).dot(W).dot(y)
+        A = np.transpose(X1).dot(W).dot(X1)
+        #A = A + 0.001*np.eye(X1.shape[1]) # if we want L2 regularization
         #theta = linalg.solve(A, b) # A*theta = b
-        theta, res, rnk, s = linalg.lstsq(A, b)
-        yest[i] = theta[0] + theta[1] * x[i] 
-    f = interp1d(x, yest,fill_value='extrapolate')
-    return f(xnew)
-    
-x = cars['WGT'].values
+        beta, res, rnk, s = lstsq(A, b)
+        yest[i] = np.dot(X1[i],beta)
+    if X.shape[1]==1:
+      f = interp1d(X.flatten(),yest,fill_value='extrapolate')
+    else:
+      f = LinearNDInterpolator(X, yest)
+    output = f(xnew) # the output may have NaN's where the data points from xnew are outside the convex hull of X
+    if sum(np.isnan(output))>0:
+      g = NearestNDInterpolator(X,y.ravel()) 
+      # output[np.isnan(output)] = g(X[np.isnan(output)])
+      output[np.isnan(output)] = g(xnew[np.isnan(output)])
+    return output
+  
+# defining the kernel boosted lowess regression model
+def boosted_lwr(X, y, xnew, kern, tau, intercept):
+  # we need decision trees
+  # for training the boosted method we use X and y
+  Fx = lw_reg(X,y,X,kern,tau,intercept) # we need this for training the Decision Tree
+  # Now train the Decision Tree on y_i - F(x_i)
+  new_y = y - Fx
+  #model = DecisionTreeRegressor(max_depth=2, random_state=123)
+  model = RandomForestRegressor(n_estimators=100,max_depth=2)
+  #model = model_xgb
+  model.fit(X,new_y)
+  output = model.predict(xnew) + lw_reg(X,y,xnew,kern,tau,intercept)
+  return output 
+```
+
+Apply cars data:
+
+```python
+X = cars[['ENG','CYL','WGT']].values
 y = cars['MPG'].values
 
-lowess_reg(x,y,2100,tricubic,0.01)
-
-xnew = np.arange(1500,5500,10) 
-yhat = lowess_reg(x,y,xnew,tricubic,80)
-
-plt.scatter(x,y)
-plt.plot(xnew,yhat,color='red',lw=2)
-```
-
-<img width="644" alt="image" src="https://user-images.githubusercontent.com/98488324/153696320-25bb092f-ef78-4f8b-b819-41dd99550893.png">
-
-
-```python
-xtrain, xtest, ytrain, ytest = tts(x,y,test_size=0.25, random_state=123)
-
 scale = StandardScaler()
-xtrain_scaled = scale.fit_transform(xtrain.reshape(-1,1))
-xtest_scaled = scale.transform(xtest.reshape(-1,1))
+model_xgb = xgb.XGBRegressor(objective ='reg:squarederror',n_estimators=100,reg_lambda=20,alpha=1,gamma=10,max_depth=3)
 
-yhat_test = lowess_reg(xtrain_scaled.ravel(),ytrain,xtest_scaled,tricubic,0.1)
-
-print(mse(yhat_test,ytest))
-```
-15.961885966790936
-
-
-```python
-plt.plot(np.sort(xtest_scaled.ravel()),yhat_test)
-```
-![image](https://user-images.githubusercontent.com/98488324/153695299-b5a1f418-3757-4854-ab90-0a4184959d79.png)
-
-
-#### Gradient Boosting:
-```python
-rf = RandomForestRegressor(n_estimators=100,max_depth=3)
-rf.fit(xtrain_scaled,ytrain)
-
-print(mse(ytest,rf.predict(xtest_scale)))
-```
-15.931305250431844
-
-```python
-yhat_test = lowess_reg(xtrain_scaled.ravel(),ytrain,xtest_scale.ravel(),tricubic,0.1)
-
-dat_test = np.column_stack([xtest_scale,ytest,yhat_test])
-
-sorted_dat_test = dat_test[np.argsort(dat_test[:,0])]
-
-kf = KFold(n_splits=10,shuffle=True,random_state=310)
+# Nested Cross-Validation
 mse_lwr = []
+mse_blwr = []
 mse_rf = []
-
-for idxtrain,idxtest in kf.split(x):
-  ytrain = y[idxtrain]
-  xtrain = x[idxtrain]
-  xtrain = scale.fit_transform(xtrain.reshape(-1,1))
-  ytest = y[idxtest]
-  xtest = x[idxtest]
-  xtest = scale.transform(xtest.reshape(-1,1))
-  yhat_lwr = lowess_reg(xtrain.ravel(),ytrain,xtest.ravel(),tricubic,0.5)
-  rf.fit(xtrain,ytrain)
-  yhat_rf = rf.predict(xtest)
-  mse_lwr.append(mse(ytest,yhat_lwr))
-  mse_rf.append(mse(ytest,yhat_rf))
+mse_xgb = []
+mse_nn = []
+for i in range(123):
+  kf = KFold(n_splits=10,shuffle=True,random_state=i)
+  # this is the Cross-Validation Loop
+  for idxtrain, idxtest in kf.split(X):
+    xtrain = X[idxtrain]
+    ytrain = y[idxtrain]
+    ytest = y[idxtest]
+    xtest = X[idxtest]
+    xtrain = scale.fit_transform(xtrain)
+    xtest = scale.transform(xtest)
+    yhat_lwr = lw_reg(xtrain,ytrain, xtest,Tricubic,tau=1.2,intercept=True)
+    yhat_blwr = boosted_lwr(xtrain,ytrain, xtest,Tricubic,tau=1.2,intercept=True)
+    model_rf = RandomForestRegressor(n_estimators=100,max_depth=3)
+    model_rf.fit(xtrain,ytrain)
+    yhat_rf = model_rf.predict(xtest)
+    model_xgb.fit(xtrain,ytrain)
+    yhat_xgb = model_xgb.predict(xtest)
+    #model_nn.fit(xtrain,ytrain,validation_split=0.3, epochs=500, batch_size=20, verbose=0, callbacks=[es])
+    #yhat_nn = model_nn.predict(xtest)
+    mse_lwr.append(mse(ytest,yhat_lwr))
+    mse_blwr.append(mse(ytest,yhat_blwr))
+    mse_rf.append(mse(ytest,yhat_rf))
+    mse_xgb.append(mse(ytest,yhat_xgb))
+    #mse_nn.append(mse(ytest,yhat_nn))
+print('The Cross-validated Mean Squared Error for Lowess is : '+str(np.mean(mse_lwr)))
+print('The Cross-validated Mean Squared Error for Boosted Lowess is : '+str(np.mean(mse_blwr)))
+print('The Cross-validated Mean Squared Error for Random Forest is : '+str(np.mean(mse_rf)))
+print('The Cross-validated Mean Squared Error for Extreme Gradient Boosting (XGBoost) is : '+str(np.mean(mse_xgb)))
 ```
+The Cross-validated Mean Squared Error for Lowess is : 17.025426125745327
+The Cross-validated Mean Squared Error for Boosted Lowess is : 16.656353893436698
+The Cross-validated Mean Squared Error for Random Forest is : 16.947624934702624
+The Cross-validated Mean Squared Error for Extreme Gradient Boosting (XGBoost) is : 16.14075756009356
+
+
+```python
+print("Crossvalidated mean square error of Lowess is " + str(np.mean(mse_lwr)))
+```
+
 
 #### Final results: 
 
@@ -222,6 +255,9 @@ Crossvalidated mean square error of Random Forest is 18.3197148440588
 
 Since we aim to minimize the crossvalidated mean square error (MSE) for the better results, I conclude that Locally Weighted Regression (Lowess) achieved the better result than Random Forest. 
 
+Record the cross-validated mean square errors and the mean absolute errors.
+report the crossvalidated mean square error and 
+determine which method is achieveng the better results.
 
 
 ## References
