@@ -7,8 +7,7 @@ Multivariate regression is a technique that estimates a single regression model 
 
 In general, we want
 
-<img width="399" alt="image" src="https://user-images.githubusercontent.com/98488324/156024018-1663fe8d-ef37-4425-b128-0689a161d61e.png">
-
+<img width="376" alt="image" src="https://user-images.githubusercontent.com/98488324/156024389-4a8be34c-f41b-4f35-ae2d-d8bea23de51b.png">
 where  𝐹  represents the model (regressor) we consider.
 
 Variable Selection: 
