@@ -1,21 +1,20 @@
 # Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting including XGBoost
 
 ### Multivariate Regression Analysis
-As the name implies, multivariate regression is a technique that estimates a single regression model with more than one outcome variable. When there is more than one predictor variable in a multivariate regression model, the model is a multivariate multiple regression.
+Multivariate regression is a technique that estimates a single regression model with more than one outcome variable as the name implies. When there is more than one predictor variable in a multivariate regression model, the model is a multivariate multiple regression.
 
 
-Multivariate Regression Analysis is a 
 
-In general we want
+In general, we want
 
-𝔼(𝑦|𝑋1,𝑋2,...𝑋𝑝):=𝐹(𝑋1,𝑋2,𝑋3,...𝑋𝑝) 
+<img width="399" alt="image" src="https://user-images.githubusercontent.com/98488324/156024018-1663fe8d-ef37-4425-b128-0689a161d61e.png">
 
 where  𝐹  represents the model (regressor) we consider.
 
-Variable Selection
+Variable Selection: 
 We want to select only the features that are really important for our model.
 
-If the functional input-output model is  𝑌=𝐹(𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝)  then we imagine that it is very possible that only a subset of the variables  𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝  are important and we need to disconsider (eliminate from the model) those that are not relevant.
+If the functional input-output model is  𝑌=𝐹(𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝) , then we imagine that it is very possible that only a subset of the variables  𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝  are important and we need to disconsider (eliminate from the model) those that are not relevant.
 
 Programming and algorithms are based on equations, functions and statement evaluations.
 
@@ -25,7 +24,7 @@ To represent variable selection in a functional way, we can think of multiplying
 
 where the weights  𝑤𝑖  are either  0  or  1. 
 
-The vector of binary weights  𝑤=(𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the sparsity pattern for the variable selection.
+The vector of binary weights  𝑤=(𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
 
 Critical Aspects
 What is the simplest choice for the function  𝐹 ?
@@ -122,7 +121,7 @@ df = pd.read_csv("drive/MyDrive/DATA410_AdvML/Boston Housing Prices.csv")
 <img width="1179" alt="image" src="https://user-images.githubusercontent.com/98488324/155917389-b3c4e978-eac0-4f07-8c90-961fdff87ef1.png">
 
 
-### Regression Analysis:
+### Regression Analysis
 Import libraries and create functions:
 
 ```python
