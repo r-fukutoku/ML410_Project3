@@ -39,6 +39,7 @@ and the sparsity pattern means that a subset of the  𝛽1,𝛽2,...𝛽𝑝  ar
 Therefore, we assume
 
 <img width="141" alt="image" src="https://user-images.githubusercontent.com/98488324/156032562-16d6669a-0996-4bb7-aa9b-a178f9c3a02a.png">
+
 and we want the coefficients  𝛽. 
 
 The "classical" way of solving is:
@@ -48,6 +49,7 @@ The "classical" way of solving is:
 and we get
 
 <img width="222" alt="image" src="https://user-images.githubusercontent.com/98488324/156032618-f6a7a935-e366-4adc-8c30-f62adb920e9c.png">
+
 where  𝔼(𝑌)  denotes the expected value of  𝑌. 
 
 
