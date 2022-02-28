@@ -352,6 +352,8 @@ Chugh, A. (Dec 8, 2020). MAE, MSE, RMSE, Coefficient of Determination, Adjusted 
 
 Li, C. A Gentle Introduction to Gradient Boosting. [gradient_boosting.pdf](https://github.com/r-fukutoku/Project3/files/8154698/gradient_boosting.pdf)
 
+Vega, R. D. V. and Rai, A. G. Multivariate Regression. [ Brilliant.org ](https://brilliant.org/wiki/multivariate-regression/). (https://brilliant.org/wiki/multivariate-regression/)
+
 
 
 ##### Jekyll Themes
