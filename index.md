@@ -6,20 +6,23 @@ Multivariate regression is a technique that estimates a single regression model 
 In general, we want
 
 <img width="376" alt="image" src="https://user-images.githubusercontent.com/98488324/156024389-4a8be34c-f41b-4f35-ae2d-d8bea23de51b.png">
+
 where  𝐹  represents the model (regressor) we consider.
 
 
 Variable Selection:      
 - We want to select only the features that are really important for our model.
 
-- If the functional input-output model is  𝑌=𝐹(𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝) , then we imagine that it is very possible that only a subset of the variables  𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝  are important and we need to disconsider (eliminate from the model) those that are not relevant.
+- If the functional input-output model is  𝑌 = 𝐹(𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝), then we imagine that it is very possible that only a subset of the variables  𝑋1,𝑋2,𝑋3,𝑋4,𝑋5...𝑋𝑝  are important and we need to disconsider (eliminate from the model) those that are not relevant.
 
 - Programming and algorithms are based on equations, functions and statement evaluations.
 
 - To represent variable selection in a functional way, we can think of multiplying each variable from the model by a binary weight, a weight of  0  means the feature is not important and a weight of  1  means that it is important:
 
 <img width="521" alt="image" src="https://user-images.githubusercontent.com/98488324/156049017-24155dca-c797-465d-8fec-b56d515cd07a.png">
+
 where the weights  𝑤𝑖  are either  0  or  1. 
+
 
 The vector of binary weights  𝑤=(𝑤1,𝑤2,𝑤3,...𝑤𝑝)  gives us what we call the __sparsity pattern__ for the variable selection.
 
