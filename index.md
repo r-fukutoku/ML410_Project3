@@ -1,4 +1,4 @@
-# Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting inclding Extreme Gradient Boosting (XGBoost)
+# Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting inclding XGBoost
 
 ### Multivariate Regression Analysis
 Multivariate Regression Analysis is a 
@@ -54,21 +54,32 @@ where  𝔼(𝑌)  denotes the expected value of  𝑌.
 
 
 ### Gradient Boosting
-Gradient Boosting is 
+Gradient Boosting is a combination of Gradient Descent and Boosting. 
+Fit an additive model (ensemble) 
+
+<img width="74" alt="image" src="https://user-images.githubusercontent.com/98488324/155919447-92691822-9966-4be1-b301-0cb6723a1485.png">
+
+in a forward stage-wise manner.
+
+In each stage, introduce a weak learner to compensate the shortcomings of existing weak learners.
+
+In Gradient Boosting,“shortcomings” are identified by gradients.
+
+Recall that, in Adaboost,“shortcomings” are identified by high-weight data points.
+
+I Both high-weight data points and gradients tell us how to improve our model.
+
 
 Assume you have an regressor  𝐹  and, for the observation  𝑥𝑖  we make the prediction  𝐹(𝑥𝑖) . To improve the predictions, we can regard  𝐹  as a 'weak learner' and therefore train a decision tree (we can call it  ℎ ) where the new output is  𝑦𝑖−𝐹(𝑥𝑖) . Thus, there are increased chances that the new regressor
 
-𝐹+ℎ 
+<img width="129" alt="image" src="https://user-images.githubusercontent.com/98488324/155919079-67576a00-89ea-4dc1-9b60-f20442c46c5c.png">
 
 is better than the old one,  𝐹. 
 
 
 
-By default, the decision trees we use here will make their predictions based on the mean value of the target within each leaf of the tree, and the splitting criteria will be based on minimizing the mean square error, MSE.
-
-
-#### Extreme Gradient Boosting (XGBoost)
-XGBoost is short for Extreme Gradient Boost (I wrote an article that provides the gist of gradient boost here). Unlike Gradient Boost, XGBoost makes use of regularization parameters that helps against overfitting.
+### Extreme Gradient Boosting (XGBoost)
+XGBoost is an abbreviation for Extreme Gradient Boost (I wrote an article that provides the gist of gradient boost here). Unlike Gradient Boost, XGBoost makes use of regularization parameters that helps against overfitting.       
 
 
 
