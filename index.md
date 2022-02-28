@@ -237,11 +237,16 @@ print('The Cross-validated MSE for Boosted Lowess is : '+str(np.mean(mse_blwr)))
 print('The Cross-validated MSE for Random Forest is : '+str(np.mean(mse_rf)))
 print('The Cross-validated MSE for Extreme Gradient Boosting (XGBoost) is : '+str(np.mean(mse_xgb)))
 ```
+
+#### Final results: 
+
 The Cross-validated MSE for Lowess is : 17.025426125745327      
 The Cross-validated MSE for Boosted Lowess is : 16.656353893436698      
 The Cross-validated MSE for Random Forest is : 16.947624934702624     
 The Cross-validated MSE for Extreme Gradient Boosting (XGBoost) is : 16.14075756009356     
 
+Since we aim to minimize the crossvalidated mean square error (MSE) for the better results, I conclude that Extreme Gradient Boosting (XGBoost) achieved the better result than other regressions including Lowess, Boosted Lowess, and Random Forest. 
+       
        
 The predictions we made for the test data:
 
@@ -312,13 +317,14 @@ for idxtrain, idxtest in kf.split(dat):
   mae_xgb.append(mean_absolute_error(y_test, yhat_xgb))
 print("Validated MAE XGBoost Regression = ${:,.2f}".format(1000*np.mean(mae_xgb)))
 ```
+#### Final results: 
 
 Validated MAE Linear Regression = $4,447.94      
 Validated MAE Local Kernel Regression = $4,090.03      
 Validated MAE XGBoost Regression = $4,179.17      
 
 
-#### Final results: 
+#### Note about the MSE and MAE: 
 The goal of any machine learning model is to evaluate the accuracy of the model. In this project, the Mean Squared Error (MSE) and the Mean Absolute Error (MAE) are examined to evaluate the performance of the model in regression analysis.
 
 The Mean Squared Error represents the average of the squared difference between the original and predicted values in the data set. It measures the variance of the residuals.
@@ -331,24 +337,6 @@ The Mean Absolute Error represents the average of the absolute difference betwee
 
 <img width="266" alt="image" src="https://user-images.githubusercontent.com/98488324/155912365-371ad65c-258a-40ed-8f91-93a086929533.png">
 
-
-
-
-```python
-print("Crossvalidated mean square error of Lowess is " + str(np.mean(mse_lwr)))
-```
-Crossvalidated mean square error of Lowess is 17.584499477691253
-
-```python
-print("Crossvalidated mean square error of Random Forest is " + str(np.mean(mse_rf)))
-```
-Crossvalidated mean square error of Random Forest is 18.3197148440588
-
-Since we aim to minimize the crossvalidated mean square error (MSE) for the better results, I conclude that Locally Weighted Regression (Lowess) achieved the better result than Random Forest. 
-
-Record the cross-validated mean square errors and the mean absolute errors.
-report the crossvalidated mean square error and 
-determine which method is achieveng the better results.
 
 
 ## References
