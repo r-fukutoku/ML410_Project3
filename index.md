@@ -348,6 +348,9 @@ Maklin, C. (May 9, 2020). [_Medium_](https://towardsdatascience.com/xgboost-pyth
 
 Chugh, A. (Dec 8, 2020). [_Medium_](https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e). (https://medium.com/analytics-vidhya/mae-mse-rmse-coefficient-of-determination-adjusted-r-squared-which-metric-is-better-cd0326a5697e)
 
+Li, C. A Gentle Introduction to Gradient Boosting. [gradient_boosting.pdf](https://github.com/r-fukutoku/Project3/files/8154698/gradient_boosting.pdf)
+
+
 
 ##### Jekyll Themes
 Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/r-fukutoku/Project2/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
