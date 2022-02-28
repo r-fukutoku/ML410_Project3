@@ -1,4 +1,4 @@
-# Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting inclding XGBoost
+# Concepts and Applications of Multivariate Regression Analysis and Gradient Boosting including XGBoost
 
 ### Multivariate Regression Analysis
 Multivariate Regression Analysis is a 
